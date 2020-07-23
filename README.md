@@ -1,7 +1,7 @@
 # asimov-backend
 Backend of the Asimov 3D printer
 
-# Install
+## Install
 1. Clone repo
     ```bash
     git clone git@github.com:3DDiamantes/asimov-backend.git
@@ -12,10 +12,10 @@ Backend of the Asimov 3D printer
     go mod download
     ```
 
-# Test
+## Test
 `go test -v ./...`
 
-# Coverage report
+## Coverage report
 ```
 go test -coverpkg=./... -coverprofile=cov.out -covermode=atomic ./... && go tool cover -html=cov.out && rm cov.out
 ```
