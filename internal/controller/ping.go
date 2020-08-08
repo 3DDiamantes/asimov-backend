@@ -3,8 +3,8 @@ package controller
 import (
 	"net/http"
 
+	"github.com/3ddiamantes/asimov-backend/internal/service"
 	"github.com/gin-gonic/gin"
-	"github.com/luxarts/asimov-backend/internal/service"
 )
 
 type PingController interface {

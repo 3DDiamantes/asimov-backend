@@ -1,9 +1,9 @@
 package http
 
 import (
+	"github.com/3ddiamantes/asimov-backend/internal/controller"
+	"github.com/3ddiamantes/asimov-backend/internal/service"
 	"github.com/gin-gonic/gin"
-	"github.com/luxarts/asimov-backend/internal/controller"
-	"github.com/luxarts/asimov-backend/internal/service"
 )
 
 var (

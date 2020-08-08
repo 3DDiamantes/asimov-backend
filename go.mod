@@ -1,4 +1,4 @@
-module github.com/luxarts/asimov-backend
+module github.com/3ddiamantes/asimov-backend
 
 go 1.14
 

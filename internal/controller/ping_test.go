@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"
 
-	"github.com/luxarts/asimov-backend/internal/service"
+	"github.com/3ddiamantes/asimov-backend/internal/service"
 )
 
 func TestPing(t *testing.T) {
