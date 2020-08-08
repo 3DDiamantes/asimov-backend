@@ -1,6 +1,6 @@
 package main
 
-import "github.com/3ddiamantes/asimov-backend/internal/http"
+import "asimov-backend/internal/http"
 
 func main() {
 	router := http.InitRouter()

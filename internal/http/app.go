@@ -1,8 +1,9 @@
 package http
 
 import (
-	"github.com/3ddiamantes/asimov-backend/internal/controller"
-	"github.com/3ddiamantes/asimov-backend/internal/service"
+	"asimov-backend/internal/controller"
+	"asimov-backend/internal/service"
+
 	"github.com/gin-gonic/gin"
 )
 

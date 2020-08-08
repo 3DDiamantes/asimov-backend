@@ -1,4 +1,4 @@
-module github.com/3ddiamantes/asimov-backend
+module asimov-backend
 
 go 1.14
 
