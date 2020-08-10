@@ -20,5 +20,7 @@ func NewPingController(svc service.PingService) PingController {
 }
 
 func (ctrl *pingController) Ping(c *gin.Context) {
-	c.String(http.StatusOK, "pong")
+	response := ctrl.svc.Ping()
+
+	c.String(http.StatusOK, response)
 }
