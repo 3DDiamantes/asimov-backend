@@ -38,5 +38,5 @@ or run the bash file
 3. Make executable and run
     ```
     sudo chmod 545 /builds/asimov-backend
-    sudo /builds/asimov-backend
+    /builds/asimov-backend
     ```
