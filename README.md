@@ -37,6 +37,6 @@ or run the bash file
 # On target machine
 3. Make executable and run
     ```
-    sudo chmod 744 /builds/x.x.x-asimov-backend
-    sudo /builds/x.x.x-asimov-backend
+    sudo chmod 545 /builds/x.x.x-asimov-backend
+    /builds/x.x.x-asimov-backend
     ```
