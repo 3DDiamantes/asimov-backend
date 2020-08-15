@@ -25,11 +25,17 @@ func (a *authMiddleware) Check(c *gin.Context) {
 
 	bearerTokenSplit := strings.Split(bearerToken, " ")
 
-	if len(bearerTokenSplit) != 2 || bearerTokenSplit[0] != "Bearer" || len(strings.Split(bearerTokenSplit[1], ".")) != 3 {
+	if len(bearerTokenSplit) != 2 || bearerTokenSplit[0] != "Bearer" {
 		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "Invalid Authorization Code"})
 	}
 
-	if !jwt.Verify(bearerTokenSplit[1]) {
+	tokenSplit := strings.Split(bearerTokenSplit[1], ".")
+
+	if len(tokenSplit) != 3 {
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "Invalid Authorization Code"})
+	}
+
+	if !jwt.Verify(tokenSplit[0], tokenSplit[1], tokenSplit[2]) {
 		c.AbortWithError(http.StatusNotFound, errors.New("Signature doesn't match for token "+bearerTokenSplit[1]))
 	}
 

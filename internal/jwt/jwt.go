@@ -5,7 +5,6 @@ import (
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/json"
-	"strings"
 )
 
 type Header struct {
@@ -40,12 +39,10 @@ func generateSignature(header string, payload string) string {
 	return signature
 }
 
-func Verify(jwt string) bool {
-	jwtSplitted := strings.Split(jwt, ".")
+func Verify(header string, payload string, signature string) bool {
+	signatureGenerated := generateSignature(header, payload)
 
-	signature := generateSignature(jwtSplitted[0], jwtSplitted[1])
-
-	if signature == jwtSplitted[2] {
+	if signatureGenerated == signature {
 		return true
 	}
 
