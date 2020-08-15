@@ -27,3 +27,19 @@ func Test_generateSignature(t *testing.T) {
 
 	require.Equal(t, "dRv0cRZfo90TfgiXCFzMqZudLPYxGTD1M-YeMXAzlJs", signature)
 }
+
+func Test_VerifyOK(t *testing.T) {
+	jwt := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDb3NtZSBGdWxhbml0byJ9.dRv0cRZfo90TfgiXCFzMqZudLPYxGTD1M-YeMXAzlJs"
+
+	out := Verify(jwt)
+
+	require.True(t, out)
+}
+
+func Test_VerifyFail(t *testing.T) {
+	jwt := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDb3NtZSBGdWxhbml0byJ8.dRv0cRZfo90TfgiXCFzMqZudLPYxGTD1M-YeMXAzlJs"
+
+	out := Verify(jwt)
+
+	require.False(t, out)
+}
