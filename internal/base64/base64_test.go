@@ -6,14 +6,14 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func Test_Base64EncodeString(t *testing.T) {
-	out := Base64Encode("test1234")
+func Test_EncodeString(t *testing.T) {
+	out := Encode("test1234")
 
 	require.Equal(t, "dGVzdDEyMzQ=", out)
 }
 
-func Test_Base64DecodeString(t *testing.T) {
-	out := Base64Decode("dGVzdDEyMzQ=")
+func Test_DecodeString(t *testing.T) {
+	out := Decode("dGVzdDEyMzQ=")
 
 	require.Equal(t, "test1234", out)
 }
