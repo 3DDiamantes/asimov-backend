@@ -7,13 +7,25 @@ import (
 )
 
 func Test_EncodeString(t *testing.T) {
-	out := Encode("test1234")
+	out := EncodeString("test1234")
 
-	require.Equal(t, "dGVzdDEyMzQ=", out)
+	require.Equal(t, "dGVzdDEyMzQ", out)
 }
 
 func Test_DecodeString(t *testing.T) {
-	out := Decode("dGVzdDEyMzQ=")
+	out := DecodeString("dGVzdDEyMzQ")
 
 	require.Equal(t, "test1234", out)
+}
+
+func Test_Encode(t *testing.T) {
+	out := Encode([]byte("test1234"))
+
+	require.Equal(t, "dGVzdDEyMzQ", out)
+}
+
+func Test_Decode(t *testing.T) {
+	out := Decode("dGVzdDEyMzQ")
+
+	require.Equal(t, []byte("test1234"), out)
 }
