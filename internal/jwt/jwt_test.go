@@ -18,7 +18,7 @@ func Test_GenerateToken(t *testing.T) {
 
 	token := GenerateToken(header, payload)
 
-	require.Equal(t, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDb3NtZSBGdWxhbml0byJ9.dRv0cRZfo90TfgiXCFzMqZudLPYxGTD1M-YeMXAzlJs", token)
+	require.Equal(t, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDb3NtZSBGdWxhbml0byJ9.LHyGHUaNRnctIkDvGuy2Mr5CAhYwpJ_G8U-F9ccoOJA", token)
 }
 func Test_generateSignature(t *testing.T) {
 	header := `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`
@@ -26,11 +26,11 @@ func Test_generateSignature(t *testing.T) {
 
 	signature := generateSignature(header, payload)
 
-	require.Equal(t, "dRv0cRZfo90TfgiXCFzMqZudLPYxGTD1M-YeMXAzlJs", signature)
+	require.Equal(t, "LHyGHUaNRnctIkDvGuy2Mr5CAhYwpJ_G8U-F9ccoOJA", signature)
 }
 
 func Test_VerifyOK(t *testing.T) {
-	jwt := strings.Split("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDb3NtZSBGdWxhbml0byJ9.dRv0cRZfo90TfgiXCFzMqZudLPYxGTD1M-YeMXAzlJs", ".")
+	jwt := strings.Split("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDb3NtZSBGdWxhbml0byJ9.LHyGHUaNRnctIkDvGuy2Mr5CAhYwpJ_G8U-F9ccoOJA", ".")
 
 	out := Verify(jwt[0], jwt[1], jwt[2])
 
@@ -38,7 +38,7 @@ func Test_VerifyOK(t *testing.T) {
 }
 
 func Test_VerifyFail(t *testing.T) {
-	jwt := strings.Split("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDb3NtZSBGdWxhbml0byJ8.dRv0cRZfo90TfgiXCFzMqZudLPYxGTD1M-YeMXAzlJs", ".")
+	jwt := strings.Split("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDb3NtZSBGdWxhbml0byJ8.LHyGHUaNRnctIkDvGuy2Mr5CAhYwpJ_G8U-F9ccoOJA", ".")
 
 	out := Verify(jwt[0], jwt[1], jwt[2])
 
