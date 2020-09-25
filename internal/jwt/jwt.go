@@ -44,9 +44,5 @@ func generateSignature(header string, payload string) string {
 func Verify(header string, payload string, signature string) bool {
 	signatureGenerated := generateSignature(header, payload)
 
-	if signatureGenerated == signature {
-		return true
-	}
-
-	return false
+	return signatureGenerated == signature
 }
