@@ -1,6 +1,8 @@
 package jwt
 
 import (
+	"asimov-backend/internal/defines"
+	"os"
 	"strings"
 	"testing"
 
@@ -43,4 +45,11 @@ func Test_VerifyFail(t *testing.T) {
 	out := Verify(jwt[0], jwt[1], jwt[2])
 
 	require.False(t, out)
+}
+
+func setupTest() {
+	os.Setenv(defines.EnvJWTSecret, "secret")
+}
+func teardownTest() {
+	os.Unsetenv(defines.EnvJWTSecret)
 }
