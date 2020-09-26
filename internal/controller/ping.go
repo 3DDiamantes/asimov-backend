@@ -22,6 +22,5 @@ func NewPingController(svc service.PingService) PingController {
 func (ctrl *pingController) Ping(c *gin.Context) {
 	response := ctrl.svc.Ping()
 
-	c.Header("Access-Control-Allow-Origin", "*")
 	c.String(http.StatusOK, response)
 }

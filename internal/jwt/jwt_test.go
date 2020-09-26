@@ -9,6 +9,8 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+var prevJwtSecret string
+
 func Test_GenerateToken(t *testing.T) {
 	setupTest()
 	header := Header{
@@ -56,8 +58,10 @@ func Test_VerifyFail(t *testing.T) {
 }
 
 func setupTest() {
-	os.Setenv(defines.EnvJWTSecret, "c2VjcmV0")
+	prevJwtSecret = os.Getenv(defines.EnvJWTSecret)
+	os.Setenv(defines.EnvJWTSecret, "dGVzdA")
 }
 func teardownTest() {
-	os.Unsetenv(defines.EnvJWTSecret)
+	os.Setenv(defines.EnvJWTSecret, prevJwtSecret)
+	prevJwtSecret = ""
 }
