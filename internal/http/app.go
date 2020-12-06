@@ -1,8 +1,8 @@
 package http
 
 import (
-	"asimov-backend/internal/controller"
-	"asimov-backend/internal/service"
+	"asimov-backend/internal/middleware"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,12 +13,15 @@ var (
 
 func InitRouter() *gin.Engine {
 	router = gin.Default()
-	MapRoutes()
+	initMiddlewares()
+	mapRoutes()
 	return router
 }
+func ServeHTTP(w http.ResponseWriter, req *http.Request) {
+	router.ServeHTTP(w, req)
+}
 
-func MapRoutes() {
-	pingService := service.NewPingService()
-	pingController := controller.NewPingController(pingService)
-	router.GET("/ping", pingController.Ping)
+func initMiddlewares() {
+	authMiddleware := middleware.NewAuthMiddleware()
+	router.Use(authMiddleware.Check)
 }
