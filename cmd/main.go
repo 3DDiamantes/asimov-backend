@@ -4,5 +4,5 @@ import "asimov-backend/internal/http"
 
 func main() {
 	router := http.InitRouter()
-	router.Run(":9090")
+	router.Run(":8080")
 }

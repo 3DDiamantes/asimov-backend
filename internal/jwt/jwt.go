@@ -2,9 +2,11 @@ package jwt
 
 import (
 	"asimov-backend/internal/base64"
+	"asimov-backend/internal/defines"
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/json"
+	"os"
 )
 
 type Header struct {
@@ -29,7 +31,7 @@ func GenerateToken(header Header, payload Payload) string {
 }
 
 func generateSignature(header string, payload string) string {
-	secret := base64.EncodeString("secret")
+	secret := base64.DecodeString(os.Getenv(defines.EnvJWTSecret))
 
 	h := hmac.New(sha256.New, []byte(secret))
 
@@ -42,9 +44,5 @@ func generateSignature(header string, payload string) string {
 func Verify(header string, payload string, signature string) bool {
 	signatureGenerated := generateSignature(header, payload)
 
-	if signatureGenerated == signature {
-		return true
-	}
-
-	return false
+	return signatureGenerated == signature
 }
